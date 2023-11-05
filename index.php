@@ -1,76 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
-    <?php wp_head(); ?>
-</head>
-
-<body>
-    <header class="header">
-        <div class="container">
-            <nav class="menu__desktop">
-                <ul class="menu">
-                    <li class="menu__item active"><a href="#">Home</a></li>
-                    <li class="menu__item"><a href="#about">About Us</a></li>
-                    <li class="menu__item"><a href="#team">Team</a></li>
-                    <li class="menu__item"><a href="#"><img src="img/logo.png" alt="" class="logo"></a></li>
-                    <li class="menu__item"><a href="#provide">Services</a></li>
-                    <li class="menu__item"><a href="#">Blog</a></li>
-                    <li class="menu__item"><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            <nav class="menu__mobile">
-                <div class="menu__inner">
-                    <a href="#"><img src="img/logo.png" alt="" class="logo"></a>
-                    <div class="menu__burger"><span>toggle menu</span></div>
-                </div>
-                <ul class="menu">         
-                    <li class="menu__item active"><a href="#">Home</a></li>
-                    <li class="menu__item"><a href="#about">About Us</a></li>
-                    <li class="menu__item"><a href="#team">Team</a></li>
-                    <li class="menu__item"><a href="#provide">Services</a></li>
-                    <li class="menu__item"><a href="#">Blog</a></li>
-                    <li class="menu__item"><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="header__content">
-                <h1 class="header__title">We build it with passion</h1>
-                <p class="header__text">Just to be clear, we do this for fun not for you, just kidding.</p>
-                <a href="" class="header__button">READ MORE</a>
-            </div>
-        </div>
-    </header>
-    <div class="about" id="about">
+<?php get_header(); ?>
+    <div class="about" id="about" style="background: url(<?= CFS()->get('background_white')?>) center 100% repeat-x, url(<?= CFS()->get('background_black')?>) center 100% repeat-x, #1d1d1d;">
         <div class="container">
             <div class="about__inner">
-                <div class="about__item">
-                    <div class="about__year">2011</div>
-                    <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-                        vitae hendrerit bigus mit.</div>
-                </div>
-                <div class="about__item">
-                    <div class="about__year">2012</div>
-                    <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-                        vitae hendrerit bigus mit.
-                        Begitus vit urna nulla.</div>
-                </div>
-                <div class="about__item">
-                    <div class="about__year">2013</div>
-                    <div class="about__text">Sed at auctor sem, nec tincidunt elit. Pellentesque enim turpis, porttitor
-                        ac orci in, ultrices efficitur nisl. Ut odio libero, sodales a tellus eleifend, suscipit dapibus
-                        mi.</div>
-                </div>
-                <div class="about__item">
-                    <div class="about__year">2014</div>
-                    <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-                        vitae hendrerit bigus mit.
-                        Begitus vit urna nulla.</div>
-                </div>
+                <?php
+                $loop = CFS()->get('card');
+                foreach ($loop as $row){
+                    ?>
+                    <div class="about__item">
+                        <div class="about__year"><?= $row['card_year']?></div>
+                        <div class="about__text"><?= $row['card_text']?></div>
+                    </div>
+                    <?php 
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -167,17 +109,4 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="container">
-            <div class="footer__text">
-                Copyright &copy; Kenan Hamidic. All rights reserved.
-            </div>
-        </div>
-    </div>
-
-    
-    <script src="js/main.js"></script>
-    <?php wp_footer(); ?>
-</body>
-
-</html>
+<?php get_footer(); ?>
